@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-Feb-2008 11:35:50 by Hibernate Tools 3.2.0.CR1 -->
+<hibernate-mapping>
+    <class name="database.Document" table="document">
+        <cache usage="read-write"/>
+
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+
+        <map name="documentbundles" table="document_bundles" fetch="select" lazy="false">
+            <key column="id"/>
+           	<index-many-to-many column="pkgitemid" class="database.PkgItem"/>
+            <many-to-many column="child" class="database.Document" />
+        </map>
+
+    </class>
+</hibernate-mapping>
