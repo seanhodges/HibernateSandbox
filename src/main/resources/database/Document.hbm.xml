@@ -15,7 +15,7 @@
             <column name="name" not-null="true" />
         </property>
 
-        <map name="documentbundles" table="document_bundles" fetch="select" lazy="false">
+        <map name="documentbundles" table="document_bundles" fetch="select" lazy="true">
             <key column="id"/>
            	<index-many-to-many column="pkgitemid" class="database.PkgItem"/>
             <many-to-many column="child" class="database.Document" />
